@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS media query on a link element -->
+        <link rel="stylesheet"  href="css/style.css" />
+        <script>
+            function calcular(){
+                var peso = document.getElementById('peso').value;
+                var altura = document.getElementById('altura').value;
+                var resultado = document.getElementById('resultado');
+                
+                //tratar numeros com ,
+                altura = altura.replace(",",".");
+                
+                var imc = peso / (altura * altura);
+                imc = imc.toFixed(2);
+                
+                var mensagem = "";
+                if(imc < 18.5)
+		  mensagem = "Abaixo do peso ideal.";
+		if(imc < 24.9 && imc >18.5)
+		  mensagem = "Peso ideal.";
+		if(imc <  25.9 && imc >25)
+		  mensagem = "Sobrepeso.";
+		if(imc < 34.9 && imc >30)
+		  mensagem = "Obesidade grau I.";
+		if(imc < 39.9 && imc >35)
+		  mensagem = "Obesidade grau II.";
+		if( imc > 40)
+		  mensagem = "Obesidade grau III.";
+                
+                resultado.innerHTML = imc+"<br />"+mensagem;
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>Peso (kg):</p>
+            <input type="text" id="peso" />
+            <p>Altura (m):</p>
+            <input type="text" id="altura" />
+            
+            <p><a href="#" onclick="calcular()">Calcular</a></p>
+            <p id="resultado"></p>
+            
+        </div>
+    </body>
+</html>
